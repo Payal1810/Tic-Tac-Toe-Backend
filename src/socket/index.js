@@ -1,6 +1,6 @@
 module.exports = (io) => {
   io.on("connection", (socket) => {
-    console.log("🔌 connected:", socket.id);
+    console.log("connected:", socket.id);
 
     // tiny ping test
     socket.on("ping", (data, cb) => {
@@ -8,7 +8,7 @@ module.exports = (io) => {
     });
 
     socket.on("disconnect", () => {
-      console.log("❌ disconnected:", socket.id);
+      console.log("disconnected:", socket.id);
     });
   });
 };

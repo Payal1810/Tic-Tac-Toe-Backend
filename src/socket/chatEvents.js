@@ -26,7 +26,7 @@ class ChatEvents {
         });
 
         socket.emit("chat:joined", { roomId, userId });
-        console.log(`💬 User ${userId} joined chat room ${roomId}`);
+        console.log(`User ${userId} joined chat room ${roomId}`);
       } catch (error) {
         console.error("Error joining chat room:", error);
         socket.emit("chat:error", { message: "Failed to join chat room" });
@@ -55,7 +55,7 @@ class ChatEvents {
           };
 
           io.to(roomId.toString()).emit("chat:receive", messageData);
-          console.log(`💬 Message sent in room ${roomId} by ${userId}`);
+          console.log(`Message sent in room ${roomId} by ${userId}`);
         } else {
           socket.emit("chat:error", { message: result.error });
         }
@@ -112,7 +112,7 @@ class ChatEvents {
         });
 
         socket.emit("chat:left", { roomId, userId });
-        console.log(`💬 User ${userId} left chat room ${roomId}`);
+        console.log(` User ${userId} left chat room ${roomId}`);
       } catch (error) {
         console.error("Error leaving chat room:", error);
         socket.emit("chat:error", { message: "Failed to leave chat room" });

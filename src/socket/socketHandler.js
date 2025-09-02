@@ -11,10 +11,10 @@ class SocketHandler {
    * @param {Object} io - Socket.IO server instance
    */
   static initialize(io) {
-    console.log("🔌 Initializing Socket.IO handlers...");
+    console.log("Initializing Socket.IO handlers...");
 
     io.on("connection", (socket) => {
-      console.log(`🔗 Client connected: ${socket.id}`);
+      console.log(`Client connected: ${socket.id}`);
 
       // Register connection events
       this.registerConnectionEvents(socket);
@@ -26,22 +26,22 @@ class SocketHandler {
 
       // Handle disconnection
       socket.on("disconnect", (reason) => {
-        console.log(`❌ Client disconnected: ${socket.id}, reason: ${reason}`);
+        console.log(` Client disconnected: ${socket.id}, reason: ${reason}`);
         this.handleDisconnection(socket, reason);
       });
 
       // Handle socket errors
       socket.on("error", (error) => {
-        console.error(`🚨 Socket error for ${socket.id}:`, error);
+        console.error(`Socket error for ${socket.id}:`, error);
       });
     });
 
     // Handle server-level socket errors
     io.on("error", (error) => {
-      console.error("🚨 Socket.IO server error:", error);
+      console.error("Socket.IO server error:", error);
     });
 
-    console.log("✅ Socket.IO handlers initialized");
+    console.log("Socket.IO handlers initialized");
   }
 
   /**
@@ -76,7 +76,7 @@ class SocketHandler {
         }
 
         socket.join(roomId.toString());
-        console.log(`👤 User ${userId || "anonymous"} joined room ${roomId}`);
+        console.log(`User ${userId || "anonymous"} joined room ${roomId}`);
 
         socket.emit("roomJoined", { roomId, userId });
         socket
@@ -98,7 +98,7 @@ class SocketHandler {
         }
 
         socket.leave(roomId.toString());
-        console.log(`👤 User ${userId || "anonymous"} left room ${roomId}`);
+        console.log(`User ${userId || "anonymous"} left room ${roomId}`);
 
         socket.emit("roomLeft", { roomId, userId });
         socket
